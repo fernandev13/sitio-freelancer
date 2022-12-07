@@ -11,6 +11,14 @@
 html {
   font-size: 62.5%;
   box-sizing: border-box; /* hack box-model */
+  scroll-snap-type: y mandatory; 
+}
+/* scroll snap */
+.servicios,
+.navegacion-principal,
+.formulario{
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
 }
 *,
 *:before,
@@ -45,6 +53,7 @@ body {
   border-radius: 0.5rem;
   width: 90%;
   text-align: center;
+  border: none
 }
 .boton:hover {
   animation: shake 0.3s linear infinite both;
@@ -85,6 +94,9 @@ body {
     width: auto;
   }
 }
+.boton:hover {
+  cursor: pointer;
+}
 
 .sombra {
   -webkit-box-shadow: 0px 5px 15px 0px rgba(112, 112, 112, 0.54);
@@ -115,6 +127,21 @@ h3 {
   font-size: 2rem;
 }
 
+/* Utilidades */
+.w-sm-100 {
+  width: 100%;
+}
+@media (min-width: 768px) {
+    .w-100 {
+      width: auto;
+    }
+}
+.flex {
+  display: flex;
+}
+.alinear-derecha {
+  justify-content: flex-end;
+}
 /* navegacion-principal */
 .nav-bg {
   background-color: var(--secundario);
@@ -174,6 +201,8 @@ h3 {
   color: var(--blanco);
 }
 
+
+
 /* servicios */
 @media (min-width: 768px) {
   .servicios {
@@ -230,10 +259,19 @@ h3 {
   color: var(--primario);
 }
 
-/* .contenedor-campos {
+@media (min-width: 768px) {
+  .contenedor-campos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto auto 20rem;
+    column-gap: 1rem;
+  }
 
-} */
-
+  .campo:nth-child(3),
+  .campo:nth-child(4) {
+    grid-column: 1 / 3;
+  }
+}
 .campo {
   margin-bottom: 1rem;
 }
@@ -244,6 +282,9 @@ h3 {
   margin-bottom: 0.5rem;
   display: block;
 }
+.campo textarea {
+  height: 15rem;
+}
 
 .input-text {
   width: 100%;
@@ -252,35 +293,9 @@ h3 {
   border-radius: 0.5rem;
 }
 
-/* Boton enviar */
-
-input[type="submit"] {
-  font-size: 1.7rem;
-  font-weight: bold;
-  border: none;
-  border-radius: 0.75rem;
-  background-color: var(--blanco);
-  color: var(--oscuro);
-}
-.boton-enviar {
-  display: block;
-  box-sizing: border-box;
-  border: 0.2rem solid var(--oscuro);
-  border-radius: 0.75rem;
-  padding: 0.75rem 1.5rem;
-  background: var(--secundario);
-  color: var(--blanco);
-  transform: translateY(-0.2rem);
-  transition: transform 0.1s ease;
- }
-
-input[type="submit"]:hover .boton-enviar {
-  /* Pull the button upwards when hovered */
- transform: translateY(-0.33em);
+/* footer */
+.footer { 
+  text-align: center;
 }
 
-input[type="submit"]:active .boton-enviar {
-  /* Push the button downwards when pressed */
- transform: translateY(0);
-}
 
